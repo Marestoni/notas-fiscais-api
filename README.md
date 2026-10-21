@@ -90,6 +90,17 @@ Atenção ao plano gratuito: o serviço **dorme após alguns minutos sem uso** (
 - Autenticação, limite de requisições e versionamento da API.
 - Validação de chave de NF-e e CI.
 
+### Evolução fiscal
+
+Hoje a API é um cadastro: `valor` é o total da nota e nada é calculado nem validado do ponto de vista fiscal. Como o domínio evoluiria (as regras e alíquotas reais devem ser validadas com a legislação vigente e com a contabilidade, e por isso não estão codificadas aqui):
+
+- **Itens da nota:** um `NotaItem` (descrição, NCM, quantidade, preço unitário), com o total calculado a partir dos itens. Preço unitário e quantidade pedem escala maior que os 2 decimais usados no total.
+- **Cálculo de tributos com Strategy:** uma interface `ICalculadoraTributo` com uma implementação por tributo, registrada na DI. Incluir um tributo novo (ou as mudanças da reforma tributária) não altera o `NotaFiscalService`.
+- **Alíquotas e regras em dados:** configuração ou tabela versionada por vigência e por UF, nunca fixas no código. O regime tributário da empresa também entra no cálculo.
+- **Arredondamento explícito:** `decimal` com `MidpointRounding` definido, porque diferença de centavos importa em documento fiscal.
+- **Imutabilidade e auditoria:** nota autorizada não é editada; cancelamento e correção seriam eventos registrados.
+- **Emissão real:** exige XML assinado com certificado digital e comunicação com a SEFAZ. Seria um serviço separado, consumido por esta API, e não parte do CRUD.
+
 ## Uso de IA
 
 Este projeto foi desenvolvido com apoio de uma ferramenta de IA (Claude Code), que ajudou na estrutura, na implementação, nos testes e nas revisões de código e segurança. O autor é responsável pelas decisões e pelo código entregue.
