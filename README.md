@@ -3,7 +3,7 @@
 API REST em .NET 8 (Controllers) para cadastro e listagem de notas fiscais, com armazenamento em memória.
 
 > Este repositório é a metade backend do desafio. O frontend (React) está em:
-> **[frontend](<LINK-DO-REPOSITORIO-FRONTEND>)** — veja o README dele para rodar os dois juntos.
+> **[notas-fiscais-web](https://github.com/Marestoni/notas-fiscais-web)** — veja o README dele para rodar os dois juntos.
 
 ## Como rodar (local)
 
