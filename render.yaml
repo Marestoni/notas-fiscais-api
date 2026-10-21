@@ -1,0 +1,13 @@
+# Blueprint do Render: cria o serviço da API a partir deste repositório (New > Blueprint).
+services:
+  - type: web
+    name: notas-fiscais-api
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    plan: free
+    healthCheckPath: /health
+    envVars:
+      # URL do frontend no Vercel, sem barra no final. Preencha no painel do Render.
+      # Ex.: https://notas-fiscais.vercel.app
+      - key: Cors__AllowedOrigins__0
+        sync: false
