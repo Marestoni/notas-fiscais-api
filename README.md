@@ -5,6 +5,13 @@ API REST em .NET 8 (Controllers) para cadastro e listagem de notas fiscais, com 
 > Este repositório é a metade backend do desafio. O frontend (React) está em:
 > **[notas-fiscais-web](https://github.com/Marestoni/notas-fiscais-web)** — veja o README dele para rodar os dois juntos.
 
+## Demo publicada
+
+- **Site:** https://notas-fiscais-web.vercel.app
+- **API:** https://notas-fiscais-api-2tym.onrender.com (`/health` e `/api/notas`)
+
+A API roda no plano gratuito do Render: depois de alguns minutos parada ela dorme, e a primeira chamada leva cerca de um minuto para acordar. Como os dados ficam em memória, as notas também somem quando ela reinicia.
+
 ## Como rodar (local)
 
 ```bash
